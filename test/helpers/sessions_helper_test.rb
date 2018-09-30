@@ -1,4 +1,4 @@
-=begin
+
  require 'test_helper'
 
 class SessionsHelperTest < ActionView::TestCase
@@ -18,4 +18,4 @@ class SessionsHelperTest < ActionView::TestCase
         assert_nil current_user
     end
 end
-=end
+
