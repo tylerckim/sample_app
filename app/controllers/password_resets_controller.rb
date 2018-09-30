@@ -26,11 +26,11 @@ class PasswordResetsController < ApplicationController
         if params[:user][:password].empty?                  # Case (3)
             @user.errors.add(:password, "can't be empty")
             render 'edit'
-            elsif @user.update_attributes(user_params)          # Case (4)
+        elsif @user.update_attributes(user_params)          # Case (4)
             log_in @user
             flash[:success] = "Password has been reset."
             redirect_to @user
-            else
+        else
             render 'edit'                                     # Case (2)
         end
     end
