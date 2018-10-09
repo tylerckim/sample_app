@@ -81,31 +81,31 @@ test "associated microposts should be destroyed" do
 end
 
 test "should follow and unfollow a user" do
-    michael  = users(:michael)
+    tyler  = users(:tyler)
     archer   = users(:archer)
-    assert_not michael.following?(archer)
-    michael.follow(archer)
-    assert michael.following?(archer)
-    assert archer.followers.include?(michael)
-    michael.unfollow(archer)
-    assert_not michael.following?(archer)
+    assert_not tyler.following?(archer)
+    tyler.follow(archer)
+    assert tyler.following?(archer)
+    assert archer.followers.include?(tyler)
+    tyler.unfollow(archer)
+    assert_not tyler.following?(archer)
 end
 
 test "feed should have the right posts" do
-    michael = users(:michael)
+    tyler = users(:tyler)
     archer  = users(:archer)
     lana    = users(:lana)
     # Posts from followed user
     lana.microposts.each do |post_following|
-        assert michael.feed.include?(post_following)
+        assert tyler.feed.include?(post_following)
     end
     # Posts from self
-    michael.microposts.each do |post_self|
-        assert michael.feed.include?(post_self)
+    tyler.microposts.each do |post_self|
+        assert tyler.feed.include?(post_self)
     end
     # Posts from unfollowed user
     archer.microposts.each do |post_unfollowed|
-        assert_not michael.feed.include?(post_unfollowed)
+        assert_not tyler.feed.include?(post_unfollowed)
     end
 end
 

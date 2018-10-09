@@ -1,0 +1,14 @@
+
+<% provide(:title, "Search") %>
+<h4>You searched for "<%= @q %>"</h4>
+<% @results.each do |users| %>
+<div class="card white">
+<div class="card-content black-text">
+
+
+</div>
+<div class="card-action">
+<%= link_to "View profile", user_path(users)%>
+</div>
+</div>
+<% end %>

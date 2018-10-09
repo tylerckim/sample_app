@@ -1,10 +1,10 @@
-=begin
+
 require 'test_helper'
 
 class MicropostsInterfaceTest < ActionDispatch::IntegrationTest
     
     def setup
-        @user = users(:michael)
+        @user = users(:tyler)
     end
     
     test "micropost interface" do
@@ -35,4 +35,4 @@ get user_path(users(:archer))
 assert_select 'a', text: 'delete', count: 0
 end
 end
-=end
+
