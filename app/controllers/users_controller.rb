@@ -9,9 +9,21 @@ class UsersController < ApplicationController
   end
   
   def search
-      @q = "#{params[:q]}"
-      @results = User.all.where("name LIKE ? or email LIKE ?", @q, @q)
-      render :search
+  @q = "#{params[:q]}"
+  @results = User.all.where("name LIKE ?", @q)
+  render :search
+end
+  
+  def upload_picture
+      if request.post?
+          @user = current_user
+          unless params[:user].nil?
+              if @user.update_attribute(:picture, params[:user][:picture])
+                  flash[:success] = "Picture uploaded!"
+                  redirect_back(fallback_location: root_path)
+              end
+          end
+      end
   end
   
   def show
